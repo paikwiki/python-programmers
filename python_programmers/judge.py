@@ -1,4 +1,4 @@
-class Judge():
+class Judge:
     def __init__(self):
         self.answer = None
 

@@ -1,4 +1,4 @@
-class FuncExecutor():
+class FuncExecutor:
     def __init__(self, func):
         self.__func = func
 
