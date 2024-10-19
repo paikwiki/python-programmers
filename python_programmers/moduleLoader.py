@@ -19,11 +19,11 @@ class ModuleLoader:
         spec.loader.exec_module(module)
         self.module = module
 
-    def get_object(self, func_name):
+    def get_object(self, object_name):
         if self.module is None:
             raise RuntimeError("Module not loaded. Call load_module() first.")
 
-        if not hasattr(self.module, func_name):
-            raise AttributeError(f"'{func_name}' function not found in {self.module_name}.")
+        if not hasattr(self.module, object_name):
+            raise AttributeError(f"'{object_name}' not found in {self.module_name}.")
 
-        return getattr(self.module, func_name)
+        return getattr(self.module, object_name)
