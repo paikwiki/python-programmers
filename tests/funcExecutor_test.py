@@ -14,3 +14,14 @@ class FuncExecutorTest(unittest.TestCase):
 
         # then
         self.assertEqual(result, 42)
+
+    def test_인자와_함께_함수를_실행할_수_있다(self):
+        # given
+        def test_func(a):
+            return 41 + a
+
+        # when
+        result = FuncExecutor(test_func).execute(1)
+
+        # then
+        self.assertEqual(result, 42)
