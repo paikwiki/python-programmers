@@ -1,4 +1,4 @@
-import importlib
+import importlib.util
 import os
 import sys
 
@@ -19,7 +19,7 @@ class ModuleLoader:
         spec.loader.exec_module(module)
         self.module = module
 
-    def get_func(self, func_name):
+    def get_object(self, func_name):
         if self.module is None:
             raise RuntimeError("Module not loaded. Call load_module() first.")
 

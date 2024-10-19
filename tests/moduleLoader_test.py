@@ -17,10 +17,10 @@ class ModuleLoaderTest(unittest.TestCase):
         loader = ModuleLoader(self.module_path)
         loader.load_module()
 
-        solution_func = loader.get_func("solution")
+        solution_func = loader.get_object("solution")
         self.assertEqual(solution_func(), 'Function "solution()" executed.')
 
-        another_func = loader.get_func("another_func")
+        another_func = loader.get_object("another_func")
         self.assertEqual(another_func(), 'Function "another_func()" executed.')
 
     def test_모듈에_없는_함수를_가져올_경우_에러를_반환한다(self):
@@ -28,4 +28,4 @@ class ModuleLoaderTest(unittest.TestCase):
         loader.load_module()
 
         with self.assertRaises(AttributeError):
-            loader.get_func("non_existent_function")
+            loader.get_object("non_existent_function")
