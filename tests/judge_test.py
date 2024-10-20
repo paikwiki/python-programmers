@@ -4,7 +4,7 @@ from python_programmers.judge import Judge
 
 
 class JudgeTest(TestCase):
-    def test_judge_is_defined(self):
+    def test_is_defined(self):
         # when
         judge = Judge()
 
