@@ -31,9 +31,10 @@ def main():
 
     judge = Judge()
 
-    for idx, (input, output) in enumerate(inputs_and_outputs, start=1):
+    for idx, ((inputs_and_output)) in enumerate(inputs_and_outputs, start=1):
+        *inputs, output = inputs_and_output
         judge.setAnswer(output)
-        userAnswer = executor.execute(input)
+        userAnswer = executor.execute(*inputs)
 
         if judge.grade(userAnswer):
             print(f"🟢 #{idx} ")
