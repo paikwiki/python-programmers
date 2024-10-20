@@ -1,8 +1,8 @@
 import argparse
 
-from funcExecutor import FuncExecutor
-from judge import Judge
-from moduleLoader import ModuleLoader
+from python_programmers.funcExecutor import FuncExecutor
+from python_programmers.judge import Judge
+from python_programmers.moduleLoader import ModuleLoader
 
 ANSWER = 42
 
@@ -42,7 +42,3 @@ def main():
             print(f"🔴 #{idx} {userAnswer=}")
             print(f"  - answer: {output}")
             print(f"  - input: {input}")
-
-
-if __name__ == "__main__":
-    main()

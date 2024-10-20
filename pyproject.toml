@@ -12,3 +12,7 @@ python = "^3.12"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+submit = "python_programmers:main"
+test = "tools.run_tests:main"
