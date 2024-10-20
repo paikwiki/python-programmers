@@ -17,7 +17,7 @@ class JudgeTest(TestCase):
         judge = Judge()
 
         # when
-        judge.setAnswer(answer)
+        judge.set_answer(answer)
 
         # then
         self.assertTrue(judge.answer == answer)
@@ -27,7 +27,7 @@ class JudgeTest(TestCase):
         answer = 42
         userAnswer = 42
         judge = Judge()
-        judge.setAnswer(answer)
+        judge.set_answer(answer)
 
         # when
         result = judge.grade(userAnswer)

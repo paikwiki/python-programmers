@@ -2,7 +2,7 @@ class Judge:
     def __init__(self):
         self.answer = None
 
-    def setAnswer(self, answer):
+    def set_answer(self, answer):
         self.answer = answer
 
     def grade(self, userAnswer):
