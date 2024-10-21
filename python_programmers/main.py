@@ -26,10 +26,10 @@ def main():
 
     for idx, (graded) in enumerate(tester.gradeOne(), start=1):
         if graded["result"]:
-            print(f"🟢 #{idx}")
+            print(f"🟢 TestCase #{idx}: Success")
         else:
             print(
-                f"🔴 #{idx}\n"
+                f"🔴 TestCase #{idx}: Failure\n"
                 + f" - yours:\t{graded["user_output"]}\n"
                 + f" - expected:\t{graded["expected_output"]}\n"
                 + f" - input:\t{graded["input"]}"
