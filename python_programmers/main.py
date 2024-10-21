@@ -3,6 +3,7 @@ import argparse
 from python_programmers.funcExecutor import FuncExecutor
 from python_programmers.judge import Judge
 from python_programmers.moduleLoader import ModuleLoader
+from python_programmers.testExecutor import TestExecutor
 
 ANSWER = 42
 
@@ -21,24 +22,22 @@ def main():
     )
     args = parser.parse_args()
 
-    loader = ModuleLoader(args.target)
-    loader.__load_module()
+    loader = ModuleLoader()
+    tester = TestExecutor(loader, args.target)
 
     func = loader.get_object(args.func_name)
-    inputs_and_outputs = loader.get_object("inputs_and_outputs")
-
     executor = FuncExecutor(func)
 
     judge = Judge()
 
-    for idx, ((inputs_and_output)) in enumerate(inputs_and_outputs, start=1):
-        *inputs, output = inputs_and_output
-        judge.set_answer(output)
-        userAnswer = executor.execute(*inputs)
+    testCases = tester.getTestCases()
+    for idx, (testCase) in enumerate(testCases, start=1):
+        judge.set_answer(testCase["output"])
+        userAnswer = executor.execute(*testCase["input"])
 
         if judge.grade(userAnswer):
-            print(f"🟢 #{idx} ")
+            print(f"🟢 #{idx}")
         else:
-            print(f"🔴 #{idx} {userAnswer=}")
-            print(f"  - answer: {output}")
-            print(f"  - input: {input}")
+            print(f"🔴 #{idx}")
+            print(f"  - answer: {testCase["output"]}")
+            print(f"  - userAnswer: {userAnswer}")
