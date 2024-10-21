@@ -23,14 +23,20 @@ class TestExecutorTest(unittest.TestCase):
         # then
         self.assertTrue(self.tester)
 
-    def test_유저의_정답_여부를_확인할_수_있다_case1_모두_정답(self):
+    def test_유저의_정답_여부를_각_테스트케이스별로_확인할_수_있다_case1_모두_정답(
+        self,
+    ):
         # when
-        result = self.tester.grade()
+        results = []
+        for result in self.tester.gradeOne():
+            results.append(result)
 
         # then
-        self.assertTrue(result)
+        self.assertEqual(results, [True, True])
 
-    def test_유저의_정답_여부를_확인할_수_있다_case2_모두_오답(self):
+    def test_유저의_정답_여부를_각_테스트케이스별로_확인할_수_있다_case2_오답_포함(
+        self,
+    ):
         # given
         moduleLoader = ModuleLoader()
         judge = Judge()
@@ -41,7 +47,9 @@ class TestExecutorTest(unittest.TestCase):
         )
 
         # when
-        result = tester.grade()
+        results = []
+        for result in tester.gradeOne():
+            results.append(result)
 
         # then
-        self.assertFalse(result)
+        self.assertEqual(results, [True, False])

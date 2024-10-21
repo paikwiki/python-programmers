@@ -1,5 +1,8 @@
 def solution(num1, num2):
-    return num1 + num2 + 1  # Incorrect logic
+    result = num1 + num2
+    if result == 42:
+        return result + 1  # Incorrect logic
+    return result
 
 
 inputs_and_outputs = [

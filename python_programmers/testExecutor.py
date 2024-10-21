@@ -25,13 +25,10 @@ class TestExecutor:
 
         return tuple(testCases)
 
-    def grade(self):
+    def gradeOne(self):
         funcExecutor = FuncExecutor(self.moduleLoader.get_object("solution"))
 
-        resultList = []
         for testCase in self.__testCases:
             self.judge.set_answer(testCase["output"])
             userAnswer = funcExecutor.execute(*testCase["input"])
-            resultList.append(self.judge.grade(userAnswer))
-
-        return all(resultList)
+            yield self.judge.grade(userAnswer)

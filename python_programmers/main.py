@@ -24,19 +24,8 @@ def main():
     judge = Judge()
     tester = TestExecutor(loader, judge, args.target)
 
-    if tester.grade():
-        print("🟢")
-    else:
-        print("🔴")
-
-    # testCases = tester.getTestCases()
-    # for idx, (testCase) in enumerate(testCases, start=1):
-    #     judge.set_answer(testCase["output"])
-    #     userAnswer = executor.execute(*testCase["input"])
-
-    #     if judge.grade(userAnswer):
-    #         print(f"🟢 #{idx}")
-    #     else:
-    #         print(f"🔴 #{idx}")
-    #         print(f"  - answer: {testCase["output"]}")
-    #         print(f"  - userAnswer: {userAnswer}")
+    for idx, (result) in enumerate(tester.gradeOne(), start=1):
+        if result:
+            print(f"🟢 #{idx}")
+        else:
+            print(f"🔴 #{idx}")
