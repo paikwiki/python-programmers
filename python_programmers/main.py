@@ -5,8 +5,6 @@ from python_programmers.judge import Judge
 from python_programmers.moduleLoader import ModuleLoader
 from python_programmers.testExecutor import TestExecutor
 
-ANSWER = 42
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -23,21 +21,22 @@ def main():
     args = parser.parse_args()
 
     loader = ModuleLoader()
-    tester = TestExecutor(loader, args.target)
-
-    func = loader.get_object(args.func_name)
-    executor = FuncExecutor(func)
-
     judge = Judge()
+    tester = TestExecutor(loader, judge, args.target)
 
-    testCases = tester.getTestCases()
-    for idx, (testCase) in enumerate(testCases, start=1):
-        judge.set_answer(testCase["output"])
-        userAnswer = executor.execute(*testCase["input"])
+    if tester.grade():
+        print("🟢")
+    else:
+        print("🔴")
 
-        if judge.grade(userAnswer):
-            print(f"🟢 #{idx}")
-        else:
-            print(f"🔴 #{idx}")
-            print(f"  - answer: {testCase["output"]}")
-            print(f"  - userAnswer: {userAnswer}")
+    # testCases = tester.getTestCases()
+    # for idx, (testCase) in enumerate(testCases, start=1):
+    #     judge.set_answer(testCase["output"])
+    #     userAnswer = executor.execute(*testCase["input"])
+
+    #     if judge.grade(userAnswer):
+    #         print(f"🟢 #{idx}")
+    #     else:
+    #         print(f"🔴 #{idx}")
+    #         print(f"  - answer: {testCase["output"]}")
+    #         print(f"  - userAnswer: {userAnswer}")
