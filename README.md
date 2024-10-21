@@ -32,3 +32,28 @@ $ poetry run submit --target=quizzes/c30l120803.py
  - input:       (100, 2)
 $
 ```
+
+## 임시 도구 - 문제 입출력 가져오기
+
+아래 명령으로 문제의 입출력 데이터와 빈 `solution()` 함수를 화면에 출력할 수 있습니다.
+
+```sh
+$ poetry run crawl --url=https://school.programmers.co.kr/learn/courses/30/lessons/135808
+def solution(k, m, score, result):
+    return None
+
+
+inputs_and_outputs = [
+    # k, m, score, result
+    (3, 4, [1, 2, 3, 1, 2, 3, 1], 8),
+    (4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2], 33),
+]
+```
+
+이 명령과 쉘 리디렉션을 함께 활용해서 문제 입출력 데이터를 파일에 세팅할 수 있습니다.
+
+```sh
+$ poetry run crawl --url=https://school.programmers.co.kr/learn/courses/30/lessons/135808 > quizzes/c30l135808.py
+```
+
+> 이 기능은 ChatGPT를 이용해 생성했으며, 프로그래머스의 모든 문제에 대응하지 못하는 임시 기능입니다.

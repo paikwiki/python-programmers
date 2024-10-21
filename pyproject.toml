@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+bs4 = "^0.0.2"
+requests = "^2.32.3"
+argparse = "^1.4.0"
 
 
 [build-system]
@@ -16,3 +19,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 submit = "python_programmers:main"
 test = "tools.run_tests:main"
+crawl = "tools.crawl_quiz:main"
