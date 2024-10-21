@@ -22,7 +22,7 @@ def main():
     args = parser.parse_args()
 
     loader = ModuleLoader(args.target)
-    loader.load_module()
+    loader.__load_module()
 
     func = loader.get_object(args.func_name)
     inputs_and_outputs = loader.get_object("inputs_and_outputs")
