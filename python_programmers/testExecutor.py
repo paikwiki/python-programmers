@@ -35,6 +35,3 @@ class TestExecutor:
             resultList.append(self.judge.grade(userAnswer))
 
         return all(resultList)
-
-    def getTestCases(self):
-        return self.__testCases

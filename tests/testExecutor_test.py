@@ -23,19 +23,6 @@ class TestExecutorTest(unittest.TestCase):
         # then
         self.assertTrue(self.tester)
 
-    def test_유저의_테스트_케이스를_반환할_수_있다(self):
-        # when
-        testCases = self.tester.getTestCases()
-
-        # then
-        self.assertEqual(
-            testCases,
-            (
-                {"input": (2, 3), "output": -1},
-                {"input": (44, 2), "output": 42},
-            ),
-        )
-
     def test_유저의_정답_여부를_확인할_수_있다_case1_모두_정답(self):
         # when
         result = self.tester.grade()
