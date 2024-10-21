@@ -10,11 +10,11 @@ from python_programmers.testExecutor import TestExecutor
 class TestExecutorTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        moduleLoader = ModuleLoader()
+        module_loader = ModuleLoader()
         judge = Judge()
         cls.target_quiz_path = os.path.abspath("tests/test_doubles/sample_quiz.py")
         cls.tester = TestExecutor(
-            moduleLoader,
+            module_loader,
             judge,
             os.path.abspath("tests/test_doubles/sample_quiz.py"),
         )
@@ -28,7 +28,7 @@ class TestExecutorTest(unittest.TestCase):
     ):
         # when
         results = []
-        for result in self.tester.gradeOne():
+        for result in self.tester.grade_one():
             results.append(result)
 
         # then
@@ -48,17 +48,17 @@ class TestExecutorTest(unittest.TestCase):
         self,
     ):
         # given
-        moduleLoader = ModuleLoader()
+        module_loader = ModuleLoader()
         judge = Judge()
         tester = TestExecutor(
-            moduleLoader,
+            module_loader,
             judge,
             os.path.abspath("tests/test_doubles/sample_quiz_with_incorrect.py"),
         )
 
         # when
         results = []
-        for result in tester.gradeOne():
+        for result in tester.grade_one():
             results.append(result)
 
         # then

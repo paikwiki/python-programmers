@@ -24,7 +24,7 @@ def main():
     judge = Judge()
     tester = TestExecutor(loader, judge, args.target)
 
-    for idx, (graded) in enumerate(tester.gradeOne(), start=1):
+    for idx, (graded) in enumerate(tester.grade_one(), start=1):
         if graded["result"]:
             print(f"🟢 TestCase #{idx}: Success")
         else:
