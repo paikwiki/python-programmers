@@ -24,8 +24,13 @@ def main():
     judge = Judge()
     tester = TestExecutor(loader, judge, args.target)
 
-    for idx, (result) in enumerate(tester.gradeOne(), start=1):
-        if result:
+    for idx, (graded) in enumerate(tester.gradeOne(), start=1):
+        if graded["result"]:
             print(f"🟢 #{idx}")
         else:
-            print(f"🔴 #{idx}")
+            print(
+                f"🔴 #{idx}\n"
+                + f" - yours:\t{graded["user_output"]}\n"
+                + f" - expected:\t{graded["expected_output"]}\n"
+                + f" - input:\t{graded["input"]}"
+            )

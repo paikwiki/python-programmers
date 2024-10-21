@@ -5,5 +5,5 @@ class Judge:
     def set_answer(self, answer):
         self.answer = answer
 
-    def grade(self, userAnswer):
-        return self.answer == userAnswer
+    def grade(self, user_answer):
+        return {"user_output": user_answer, "result": self.answer == user_answer}

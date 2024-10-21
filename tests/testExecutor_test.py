@@ -32,7 +32,17 @@ class TestExecutorTest(unittest.TestCase):
             results.append(result)
 
         # then
-        self.assertEqual(results, [True, True])
+        expected = [
+            {"expected_output": -1, "input": (2, 3), "result": True, "user_output": -1},
+            {
+                "expected_output": 42,
+                "input": (44, 2),
+                "result": True,
+                "user_output": 42,
+            },
+        ]
+
+        self.assertEqual(results, expected)
 
     def test_유저의_정답_여부를_각_테스트케이스별로_확인할_수_있다_case2_오답_포함(
         self,
@@ -52,4 +62,16 @@ class TestExecutorTest(unittest.TestCase):
             results.append(result)
 
         # then
-        self.assertEqual(results, [True, False])
+        expected = [
+            {"expected_output": 5, "input": (2, 3), "result": True, "user_output": 5},
+            {
+                "expected_output": 42,
+                "input": (40, 2),
+                "result": False,
+                "user_output": 43,
+            },
+        ]
+        self.assertEqual(
+            results,
+            expected,
+        )

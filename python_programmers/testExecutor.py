@@ -30,5 +30,13 @@ class TestExecutor:
 
         for testCase in self.__testCases:
             self.judge.set_answer(testCase["output"])
-            userAnswer = funcExecutor.execute(*testCase["input"])
-            yield self.judge.grade(userAnswer)
+            user_answer = funcExecutor.execute(*testCase["input"])
+            juggeResult = self.judge.grade(user_answer)
+            result = {
+                "input": testCase["input"],
+                "expected_output": self.judge.answer,
+                "user_output": juggeResult["user_output"],
+                "result": juggeResult["result"],
+            }
+
+            yield result
