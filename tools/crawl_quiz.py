@@ -68,7 +68,7 @@ def generate_python_script(parameters, data, url):
     script = f"""# {url}
 
 
-def solution({', '.join(parameters)}):
+def solution({', '.join(parameters[0:-1])}):
     return None
 
 

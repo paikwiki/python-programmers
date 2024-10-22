@@ -42,7 +42,7 @@ $ poetry run crawl --url=https://school.programmers.co.kr/learn/courses/30/lesso
 # https://school.programmers.co.kr/learn/courses/30/lessons/135808
 
 
-def solution(k, m, score, result):
+def solution(k, m, score):
     return None
 
 
