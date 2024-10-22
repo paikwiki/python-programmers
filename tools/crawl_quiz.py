@@ -53,7 +53,7 @@ def convert_value(value):
             return value
 
 
-def generate_python_script(parameters, data):
+def generate_python_script(parameters, data, url):
     # 주석으로 들어갈 칼럼 정보 생성
     header_comment = f"# {', '.join(parameters)}"
 
@@ -65,7 +65,10 @@ def generate_python_script(parameters, data):
         data_lines.append(f"    ({formatted_row}),")
 
     # 전체 스크립트 조합
-    script = f"""def solution({', '.join(parameters)}):
+    script = f"""# {url}
+
+
+def solution({', '.join(parameters)}):
     return None
 
 
@@ -116,7 +119,7 @@ def main():
     headers, data = fetch_data(args.url)
 
     if headers and data:
-        quiz = generate_python_script(headers, data)
+        quiz = generate_python_script(headers, data, args.url)
         print(quiz)
 
     else:
