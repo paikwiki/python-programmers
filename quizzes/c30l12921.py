@@ -2,19 +2,15 @@
 
 
 def solution(n):
-    result = [1] * (n + 1)
-    result[0:2] = [0, 0]
+    sieve = [True] * (n + 1)
+    sieve[0] = sieve[1] = False
 
-    for idx in range(2, n):
-        mul = 2
-        current = idx * mul
-        while current <= n:
-            if result[current] == 1:
-                result[current] = 0
-            mul = mul + 1
-            current = idx * mul
+    for start in range(2, int(n**0.5) + 1):
+        if sieve[start]:
+            for i in range(start * start, n + 1, start):
+                sieve[i] = False
 
-    return sum(result)
+    return sum(sieve)
 
 
 inputs_and_outputs = [
