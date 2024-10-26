@@ -9,15 +9,12 @@ def solution(N, stages):
         else:
             counts[stage] = 1
 
-    total = len(stages)
-
     rates = {}
-    current = 0
-    prev = {"total": total, "rest": 0}
-    while current <= N + 1:
-        currentStage = current
-        if current in counts:
-            currentRest = counts[current]
+    currentStage = 1
+    prev = {"total": len(stages), "rest": 0}
+    while currentStage < N + 1:
+        if currentStage in counts:
+            currentRest = counts[currentStage]
         else:
             currentRest = 0
         currentTotal = prev["total"] - prev["rest"]
@@ -26,17 +23,15 @@ def solution(N, stages):
             rates[currentStage] = currentRest / currentTotal
         else:
             rates[currentStage] = 0
+
         prev["total"] = currentTotal
         prev["rest"] = currentRest
-        current = current + 1
+        currentStage = currentStage + 1
 
     return list(
         map(
             lambda x: x[0],
-            filter(
-                lambda x: 0 < x[0] < N + 1,
-                sorted(list(rates.items()), key=lambda x: x[1], reverse=True),
-            ),
+            sorted(list(rates.items()), key=lambda x: x[1], reverse=True),
         )
     )
 
