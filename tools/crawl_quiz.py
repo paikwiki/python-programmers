@@ -5,7 +5,12 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def fetch_data(url):
+def fetch_data(url: str):
+    # 임시 보정
+    unformatted_inputs_and_outputs = ("courses/30/lessons/17682",)
+    if url.endswith(unformatted_inputs_and_outputs):
+        print("# 🚨 문제 입출력 예시 형태가 다른 문제입니다. 수정 후 사용하세요.\n")
+
     # HTML 페이지 가져오기
     response = requests.get(url)
     if response.status_code != 200:
@@ -15,7 +20,8 @@ def fetch_data(url):
     soup = BeautifulSoup(response.content, "html.parser")
 
     # "입출력 예" 텍스트 찾기
-    target_heading = soup.find(string="입출력 예")
+    targets = ["입출력 예", "입출력 예제"]
+    target_heading = soup.find(text=targets)
     if not target_heading:
         print('"입출력 예" 텍스트를 찾을 수 없습니다.')
         return [], []
