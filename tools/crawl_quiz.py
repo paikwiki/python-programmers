@@ -44,6 +44,9 @@ def fetch_data(url: str):
 
 def convert_value(value):
     """재귀적으로 값을 변환합니다."""
+    if isinstance(value, list):
+        return [convert_value(item) for item in value]
+
     try:
         # 숫자로 변환 가능하면 숫자로 변환
         return int(value)
