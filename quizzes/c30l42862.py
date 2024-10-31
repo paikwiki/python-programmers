@@ -2,30 +2,16 @@
 
 
 def solution(n, lost, reserve):
-    result = 0
-    rented = {}
+    reserve_only = set(reserve) - set(lost)
+    lost_only = set(lost) - set(reserve)
 
-    for current in range(1, n + 1):
-        if current not in lost:
-            result += 1
-        elif current in reserve:
-            result += 1
-        elif (
-            current - 1 in reserve
-            and current - 1 not in lost
-            and current - 1 not in rented
-        ):
-            rented[current - 1] = True
-            result += 1
-        elif (
-            current + 1 in reserve
-            and current + 1 not in lost
-            and current + 1 not in rented
-        ):
-            rented[current + 1] = True
-            result += 1
+    for r in reserve_only:
+        if r - 1 in lost_only:
+            lost_only.remove(r - 1)
+        elif r + 1 in lost_only:
+            lost_only.remove(r + 1)
 
-    return result
+    return n - len(lost_only)
 
 
 inputs_and_outputs = [
