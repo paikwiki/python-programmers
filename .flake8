@@ -1,0 +1,16 @@
+[flake8]
+max-line-length = 100  # 한 줄 길이 제한 (보통 100자를 많이 사용)
+exclude =
+    .git,  # Git 디렉토리 제외
+    __pycache__,  # __pycache__ 디렉토리 제외
+    venv,  # 가상 환경 폴더 제외
+    .venv,  # 가상 환경 폴더 제외
+    *.egg-info,  # 패키지 메타데이터 제외
+    build,  # 빌드 폴더 제외
+    dist  # 배포 폴더 제외
+ignore =
+    E203,  # 슬라이싱 공백 문제
+    E231,  # 콤마 뒤 공백
+    E266,  # 주석의 # 개수 초과
+    E402,  # 최상위에서 import가 아님
+    E501  # 한 줄 길이 초과

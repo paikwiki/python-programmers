@@ -16,6 +16,9 @@ argparse = "^1.4.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.black]
+line-length = 100
+
 [tool.poetry.scripts]
 submit = "python_programmers:main"
 test = "tools.run_tests:main"
